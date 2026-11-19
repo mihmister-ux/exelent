@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { DatabaseBackup, Download, Info, Upload } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Badge } from "@/components/ui/badge";
@@ -31,12 +32,14 @@ const COLUMNS = [
 export default function ExportPage() {
   const items = useShelfItems();
   const on = useToday();
+  const { hash } = useLocation();
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [restoreOpen, setRestoreOpen] = useState(false);
   const [busy, setBusy] = useState(false);
   const [building, setBuilding] = useState(false);
   const [suppliers, setSuppliers] = useState<Supplier[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const backupRef = useRef<HTMLDivElement>(null);
 
   const all = items ?? [];
   const summary = summarize(all, on);
@@ -57,6 +60,22 @@ export default function ExportPage() {
       cancelled = true;
     };
   }, []);
+
+  // Переход из «Ещё» → «Резервная копия» идёт по адресу /export#backup — это
+  // сработает и из своей шторки, и с любого экрана. После загрузки страницы
+  // прокручиваем к блоку копии. Классических якорей в HashRouter нет (хеш уже
+  // занят маршрутом), поэтому якорь читаем сами.
+  useEffect(() => {
+    if (hash !== "#backup") return;
+    const target = backupRef.current;
+    if (!target) return;
+    // Даём ленивой загрузке страницы и разводке закончиться, иначе скролл
+    // промахнётся мимо блока, который ещё не занял своё место.
+    const timer = window.setTimeout(() => {
+      target.scrollIntoView({ block: "start", behavior: "smooth" });
+    }, 150);
+    return () => window.clearTimeout(timer);
+  }, [hash]);
 
   /**
    * Скачать журнал в .xlsx.
@@ -136,6 +155,9 @@ export default function ExportPage() {
       const { items: restoredItems, suppliers: restoredSuppliers } = await restoreBackup(text);
       toast(`Восстановлено: ${restoredItems} позиций, ${restoredSuppliers} поставщиков`, "success");
       setRestoreOpen(false);
+      // Возвращаем адрес к «Резервной копии», если пришли по якорю:
+      // иначе после закрытия диалога подсветка в «Ещё» погаснет.
+      if (window.location.hash.endsWith("#backup")) window.location.hash = "#/export#backup";
     } catch (error) {
       toast(`Не удалось восстановить: ${String(error)}`, "danger");
     } finally {
@@ -207,7 +229,7 @@ export default function ExportPage() {
         </span>
       </div>
 
-      <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div ref={backupRef} className="rounded-xl border border-border bg-card p-4 shadow-sm scroll-mt-4">
         <p className="text-base font-semibold">Резервная копия</p>
         <p className="mt-1 text-sm text-muted-foreground">
           Журнал хранится только на этом устройстве. Сохраните копию, чтобы перенести его на
