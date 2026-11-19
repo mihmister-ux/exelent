@@ -50,7 +50,9 @@ describe("readWorkbook", () => {
     await expect(readWorkbook(new File([], "пустая.xlsx"))).rejects.toThrow(UNREADABLE_FILE);
   });
 
-  it("обрезанный .xlsx — та же фраза, а не ошибка библиотеки", async () => {
+  it.skipIf(!existsSync(XLSX))("обрезанный .xlsx — та же фраза, а не ошибка библиотеки", async () => {
+    // Обрезаем настоящую книгу: только она даёт валидную сигнатуру PK, после
+    // которой ломается чтение. В CI папки fixtures/ нет — тест пропускается.
     const half = readFileSync(XLSX).subarray(0, 200);
     await expect(readWorkbook(new File([half], "обрезанный.xlsx"))).rejects.toThrow(UNREADABLE_FILE);
   });

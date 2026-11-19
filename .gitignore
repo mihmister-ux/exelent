@@ -26,4 +26,8 @@ fixtures/
 # папку на месте — она просто не попадает в git.
 
 # Артефакты этапа 1 не игнорируем: data/ и reports/ — часть истории проекта.
-"reports/" 
+"reports/"
+
+# Но локальные node_modules внутри рабочих папок — всегда мусор: в
+# reports/video/promo лежит puppeteer, это тысячи файлов.
+**/node_modules/

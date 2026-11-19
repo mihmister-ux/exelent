@@ -8,8 +8,8 @@
     "dev": "vite --configLoader native --port 5173 --strictPort --host 127.0.0.1",
     "build": "tsc -b && vite build --configLoader native",
     "preview": "vite preview",
-    "test": "vitest run --configLoader native",
-    "test:c": "node --import ./reports/stub-exec.mjs ./node_modules/vitest/vitest.mjs run --pool=threads",
+    "test": "vitest run --configLoader native --config ./vitest.repo.config.ts",
+    "test:c": "node --import ./reports/stub-exec.mjs ./node_modules/vitest/vitest.mjs run --pool=threads --config ./vitest.repo.config.ts",
     "typecheck": "tsc -b",
     "icons": "python scripts/make_icons.py"
   },
