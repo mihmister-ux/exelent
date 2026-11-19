@@ -1,4 +1,5 @@
-import { DatabaseBackup, FileSpreadsheet, type LucideIcon } from "lucide-react";
+import { DatabaseBackup, FileSpreadsheet } from "lucide-react";
+import type { ComponentType } from "react";
 
 /**
  * Пункты шефф-меню «Ещё» на телефоне.
@@ -15,12 +16,20 @@ import { DatabaseBackup, FileSpreadsheet, type LucideIcon } from "lucide-react";
 
 export type MoreId = "export" | "backup";
 
+/**
+ * Иконка пункта. Именно `ComponentType`, а не `LucideIcon`: в шторку
+ * попадают и разделы из `Tab`, где иконка описана так же широко. Более узкий
+ * тип `LucideIcon` (forwardRef-компонент) с ними не совместим, и `tsc -b`
+ * на этом падает.
+ */
+type MenuIcon = ComponentType<{ className?: string }>;
+
 export interface MoreAction {
   id: MoreId;
   title: string;
   hint: string;
   path: string;
-  icon: LucideIcon;
+  icon: MenuIcon;
 }
 
 export const MORE_ACTIONS: readonly MoreAction[] = [
@@ -56,7 +65,7 @@ export interface MoreLink {
   id: string;
   title: string;
   path: string;
-  icon: LucideIcon;
+  icon: MenuIcon;
 }
 
 /**
