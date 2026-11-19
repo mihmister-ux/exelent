@@ -1,0 +1,46 @@
+{
+  "name": "exelent",
+  "private": true,
+  "version": "0.3.0",
+  "type": "module",
+  "description": "EXELent — журнал контроля сроков",
+  "scripts": {
+    "dev": "vite --configLoader native --port 5173 --strictPort --host 127.0.0.1",
+    "build": "tsc -b && vite build --configLoader native",
+    "preview": "vite preview",
+    "test": "vitest run --configLoader native",
+    "test:c": "node --import ./reports/stub-exec.mjs ./node_modules/vitest/vitest.mjs run --pool=threads",
+    "typecheck": "tsc -b",
+    "icons": "python scripts/make_icons.py"
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/inter": "^5.3.0",
+    "@zxing/browser": "^0.2.1",
+    "@zxing/library": "^0.23.0",
+    "clsx": "^2.1.1",
+    "dexie": "^4.4.7",
+    "dexie-react-hooks": "^4.4.0",
+    "lucide-react": "^1.70.0",
+    "pdfjs-dist": "^4.10.38",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5",
+    "tailwind-merge": "^3.7.0",
+    "tw-animate-css": "^1.4.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "fake-indexeddb": "^6.2.8",
+    "tailwindcss": "^4.3.5",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.6",
+    "vite-plugin-pwa": "^2.0.0",
+    "vitest": "^5.1.0"
+  }
+}

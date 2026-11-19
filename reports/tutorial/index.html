@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<title>Сроки годности — инструкция</title>
+<style>
+  /* Кадровый рендер: всё состояние композиции задаётся функцией __seek(t),
+     поэтому один и тот же t всегда даёт один и тот же кадр. */
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1280px;height:720px;overflow:hidden;background:#0f172a}
+  body{font-family:"Segoe UI","Inter",Arial,sans-serif;color:#0f172a;-webkit-font-smoothing:antialiased}
+
+  #stage{position:relative;width:1280px;height:720px;overflow:hidden;background:#ffffff}
+
+  /* ---- постоянный каркас ---- */
+  .frame{position:absolute;inset:0;display:flex;flex-direction:column}
+
+  .topbar{height:96px;flex:0 0 auto;display:flex;align-items:center;gap:18px;padding:0 44px;
+          border-bottom:1px solid #e6e2dc;background:#fdfcfa}
+  .topbar .brand{display:flex;align-items:center;gap:12px}
+  .topbar .brand img{height:44px;width:auto;border-radius:4px}
+  .topbar .wordmark{font-size:20px;font-weight:800;letter-spacing:-.01em}
+  .stepchip{margin-left:auto;display:flex;align-items:center;gap:14px}
+  .stepchip .num{display:inline-flex;align-items:center;justify-content:center;
+     min-width:52px;height:52px;border-radius:14px;background:#0f172a;color:#fff;
+     font-size:26px;font-weight:800}
+  .stepchip .total{font-size:20px;font-weight:600;color:#6b7280}
+
+  .body{flex:1 1 auto;display:flex;gap:34px;padding:34px 44px 0}
+
+  /* ---- левая колонка: текст шага ---- */
+  .copy{width:412px;flex:0 0 auto;display:flex;flex-direction:column}
+  .kicker{font-size:17px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#9a6a2f}
+  .headline{margin-top:10px;font-size:44px;line-height:1.05;font-weight:800;letter-spacing:-.02em}
+  .steps{margin-top:26px;display:flex;flex-direction:column;gap:16px}
+  .row{display:flex;gap:14px;align-items:flex-start}
+  .row .idx{flex:0 0 auto;width:38px;height:38px;border-radius:11px;background:#f1ece4;
+     color:#0f172a;font-size:19px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .row .txt{font-size:24px;line-height:1.25;font-weight:600;color:#1f2937}
+  .row.hot .idx{background:#0f172a;color:#fff}
+
+  .note{margin-top:auto;margin-bottom:26px;display:flex;gap:12px;align-items:flex-start;
+        background:#f7f4ef;border:1px solid #e6e2dc;border-radius:14px;padding:14px 16px}
+  .note .ico{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:#9a6a2f;color:#fff;
+     font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .note p{font-size:18px;line-height:1.3;color:#4b5563;font-weight:600}
+
+  /* ---- правая колонка: экран приложения ---- */
+  .screen{position:relative;flex:1 1 auto;align-self:flex-start;border-radius:16px;overflow:hidden;
+          border:1px solid #ddd8d0;box-shadow:0 18px 40px rgba(15,23,42,.14);background:#fff}
+  .screen img{display:block;width:100%;height:100%;object-fit:cover;object-position:top left}
+  /* Затемняем края кадра, чтобы взгляд шёл к центру. */
+  .screen::after{content:"";position:absolute;inset:0;pointer-events:none;
+     background:linear-gradient(180deg,rgba(255,255,255,.20) 0%,rgba(255,255,255,0) 14%,rgba(255,255,255,0) 78%,rgba(255,255,255,.16) 100%)}
+
+  .callout{position:absolute;z-index:3;background:#ffffff;border:2px solid #0f172a;border-radius:14px;
+     padding:12px 16px;font-size:21px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+  .dot{position:absolute;z-index:4;width:56px;height:56px;border-radius:50%;
+     background:rgba(255,0,0,.16);border:3px solid #ff0000}
+
+  /* ---- ступени статусов (шаг 4) ---- */
+  .legend{position:absolute;z-index:3;right:18px;bottom:18px;display:flex;flex-direction:column;gap:8px}
+  .lg{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #ddd8d0;border-radius:12px;
+      padding:10px 14px;font-size:20px;font-weight:800;box-shadow:0 8px 18px rgba(15,23,42,.14)}
+  .lg i{display:block;width:26px;height:26px;border-radius:7px}
+  .lg.exp i{background:#8b0000} .lg.soon i{background:#ff0000}
+  .lg.warn i{background:#ffeb9c} .lg.ok i{background:#16a34a}
+
+  /* ---- титул и финал ---- */
+  .cover{position:absolute;inset:0;background:#0f172a;color:#fff;display:flex;flex-direction:column;
+         justify-content:center;padding:0 96px}
+  .cover img{height:74px;width:auto;border-radius:6px;background:#fff;padding:6px 10px;align-self:flex-start}
+  .cover h1{margin-top:34px;font-size:76px;line-height:1.02;font-weight:800;letter-spacing:-.03em}
+  .cover p{margin-top:22px;font-size:30px;font-weight:600;color:#cbd5e1}
+  .cover .chips{margin-top:40px;display:flex;flex-wrap:wrap;gap:12px}
+  .cover .chips span{border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:10px 20px;
+     font-size:21px;font-weight:700;color:#e2e8f0}
+
+  /* Курсор-указатель на кнопках */
+  .pointer{position:absolute;z-index:5;width:44px;height:44px}
+  .pointer svg{display:block;filter:drop-shadow(0 4px 8px rgba(0,0,0,.35))}
+
+  .fade{position:absolute;inset:0;background:#0f172a;opacity:0;z-index:20;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="frame">
+    <div class="topbar">
+      <div class="brand">
+        <img src="assets/logo-rus.png" alt="" />
+        <span class="wordmark">Сроки годности</span>
+      </div>
+      <div class="stepchip">
+        <span class="num" id="chipNum">1</span>
+        <span class="total">из 5</span>
+      </div>
+    </div>
+
+    <div class="body">
+      <div class="copy">
+        <div class="kicker" id="kicker"></div>
+        <div class="headline" id="headline"></div>
+        <div class="steps" id="steps"></div>
+        <div class="note" id="note">
+          <span class="ico">i</span>
+          <p id="noteText"></p>
+        </div>
+      </div>
+
+      <div class="screen" id="screen">
+        <img id="shot" src="" alt="" />
+        <div class="legend" id="legend" style="display:none">
+          <div class="lg exp"><i></i>Просрочено</div>
+          <div class="lg soon"><i></i>Осталось ≤ 30 дней</div>
+          <div class="lg warn"><i></i>31–60 дней</div>
+          <div class="lg ok"><i></i>Больше 60 дней</div>
+        </div>
+        <div class="callout" id="callout" style="display:none"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover" id="cover">
+    <img src="assets/logo-rus.png" alt="" />
+    <h1>Сроки годности<br />за 5 шагов</h1>
+    <p>Инструкция для сотрудников · 2 минуты</p>
+    <div class="chips">
+      <span>1 · Накладная</span>
+      <span>2 · Товар вручную</span>
+      <span>3 · Продан / Списать</span>
+      <span>4 · Сроки по цветам</span>
+      <span>5 · Выгрузка в Excel</span>
+    </div>
+  </div>
+
+  <div class="fade" id="fade"></div>
+</div>
+
+<script>
+/**
+ * Раскадровка. Каждый шаг — свой отрезок времени; __seek(t) ставит сцену
+ * в состояние ровно на момент t. Никаких таймеров и анимаций реального
+ * времени: иначе кадры рендера дрожали бы от загрузки машины.
+ */
+const SCENES = [
+  {
+    id: "cover", start: 0, dur: 4.0,
+    kicker: "", headline: "", steps: [],
+    note: "", shot: "",
+  },
+  {
+    id: "s1", start: 4.0, dur: 9.0, chip: 1,
+    kicker: "Шаг 1",
+    headline: "Загрузить накладную",
+    steps: [
+      "Откройте раздел «Загрузка накладной»",
+      "Выберите файл Excel или PDF",
+      "Проверьте строки и нажмите «Добавить»",
+    ],
+    note: "Строки, которые не нужны, снимите галочкой — они не попадут в журнал.",
+    shot: "assets/02-invoice.png",
+    callout: { text: "Файл: .xlsx или .pdf", x: 40, y: 300 },
+  },
+  {
+    id: "s2", start: 13.0, dur: 8.0, chip: 2,
+    kicker: "Шаг 2",
+    headline: "Добавить товар вручную",
+    steps: [
+      "Нажмите «+» внизу",
+      "Впишите название и поставщика",
+      "Укажите «Годен до» и сохраните",
+    ],
+    note: "Срок высчитывается сам — статус появится сразу после сохранения.",
+    shot: "assets/03-add.png",
+    callout: { text: "«Годен до» — главное поле", x: 40, y: 250 },
+  },
+  {
+    id: "s3", start: 21.0, dur: 9.0, chip: 3,
+    kicker: "Шаг 3",
+    headline: "«Продан» или «Списать»",
+    steps: [
+      "Найдите товар в «Сроки»",
+      "Нажмите ✓ — продан",
+      "Просроченный — нажмите 🚫 «Списать»",
+    ],
+    note: "Ошиблись? В уведомлении есть «Отменить» — 7 секунд.",
+    shot: "assets/04-card-actions.png",
+    callout: { text: "✓ и 🚫 — по одной кнопке", x: 40, y: 300 },
+  },
+  {
+    id: "s4", start: 30.0, dur: 9.0, chip: 4,
+    kicker: "Шаг 4",
+    headline: "Сроки по цветам",
+    steps: [
+      "Красная полоса — просрочено",
+      "Красная — осталось ≤ 30 дней",
+      "Жёлтая — 31–60 дней",
+      "Зелёная — больше 60 дней",
+    ],
+    note: "Цвета те же, что были в Excel — привыкать не нужно.",
+    shot: "assets/01-sroki-top.png",
+    legend: true,
+  },
+  {
+    id: "s5", start: 39.0, dur: 8.0, chip: 5,
+    kicker: "Шаг 5",
+    headline: "Выгрузить в Excel",
+    steps: [
+      "Раздел «Выгрузить в Excel»",
+      "Нажмите «Скачать .xlsx»",
+      "Файл сохранится в «Загрузки»",
+    ],
+    note: "Исходный Excel не перезаписывается — выгрузка создаёт новый файл.",
+    shot: "assets/05-export.png",
+    callout: { text: "Те же 9 колонок, листы по поставщикам", x: 40, y: 300 },
+  },
+  {
+    id: "s6", start: 47.0, dur: 5.0, chip: null,
+    kicker: "", headline: "Готово", steps: [],
+    note: "", shot: "",
+  },
+];
+
+const TOTAL = 52;
+window.__total = TOTAL;
+
+const el = {
+  cover: document.getElementById("cover"),
+  frame: document.querySelector(".frame"),
+  chipNum: document.getElementById("chipNum"),
+  kicker: document.getElementById("kicker"),
+  headline: document.getElementById("headline"),
+  steps: document.getElementById("steps"),
+  note: document.getElementById("note"),
+  noteText: document.getElementById("noteText"),
+  shot: document.getElementById("shot"),
+  screen: document.getElementById("screen"),
+  legend: document.getElementById("legend"),
+  callout: document.getElementById("callout"),
+  fade: document.getElementById("fade"),
+};
+
+/** Кадр шага: подписи, картинка, подсказки. */
+function applyStep(scene, localT) {
+  el.kicker.textContent = scene.kicker || "";
+  el.headline.textContent = scene.headline || "";
+  el.steps.innerHTML = (scene.steps || [])
+    .map((text, i) => `<div class="row${i === 0 ? " hot" : ""}"><span class="idx">${i + 1}</span><span class="txt">${text}</span></div>`)
+    .join("");
+  el.note.style.display = scene.note ? "flex" : "none";
+  el.noteText.textContent = scene.note || "";
+  el.shot.src = scene.shot || "";
+  el.legend.style.display = scene.legend ? "flex" : "none";
+
+  if (scene.callout) {
+    el.callout.style.display = "block";
+    el.callout.style.left = scene.callout.x + "px";
+    el.callout.style.top = scene.callout.y + "px";
+    el.callout.textContent = scene.callout.text;
+  } else {
+    el.callout.style.display = "none";
+  }
+
+  el.chipNum.textContent = scene.chip ? String(scene.chip) : "";
+  document.querySelector(".stepchip").style.visibility = scene.chip ? "visible" : "hidden";
+
+  // Первые 0,45 с шага текст и кадр въезжают — иначе смена шага выглядит как склейка.
+  const enter = Math.min(1, localT / 0.45);
+  const shift = (1 - enter) * 18;
+  el.headline.style.opacity = enter;
+  el.headline.style.transform = `translateY(${shift}px)`;
+  el.screen.style.opacity = 0.25 + 0.75 * enter;
+  el.screen.style.transform = `translateY(${(1 - enter) * 12}px)`;
+  el.steps.style.opacity = Math.max(0, (localT - 0.15) / 0.5);
+}
+
+function seek(t) {
+  const time = Math.max(0, Math.min(TOTAL, t));
+  const scene = SCENES.find((s) => time >= s.start && time < s.start + s.dur) || SCENES[SCENES.length - 1];
+  const localT = time - scene.start;
+
+  if (scene.id === "cover" || scene.id === "s6") {
+    el.frame.style.display = "none";
+    el.cover.style.display = "flex";
+    if (scene.id === "cover") {
+      el.cover.style.opacity = 1;
+      el.cover.innerHTML = COVER_HTML;
+    } else {
+      el.cover.style.opacity = 1;
+      el.cover.innerHTML = OUTRO_HTML;
+    }
+  } else {
+    el.frame.style.display = "flex";
+    el.cover.style.display = "none";
+    applyStep(scene, localT);
+  }
+
+  // Плавные вход/выход на границах титула и финала (0,4 с).
+  let fade = 0;
+  if (time < 0.4) fade = 1 - time / 0.4;
+  if (time > TOTAL - 0.5) fade = (time - (TOTAL - 0.5)) / 0.5;
+  el.fade.style.opacity = Math.max(0, Math.min(1, fade));
+
+  return { scene: scene.id, localT: Number(localT.toFixed(2)), t: Number(time.toFixed(2)) };
+}
+
+const COVER_HTML = el.cover.innerHTML;
+
+const OUTRO_HTML = `
+  <img src="assets/logo-rus.png" alt="" />
+  <h1>Готово</h1>
+  <p>Пять шагов — и журнал сроков в порядке. Вопросы — к администратору.</p>
+  <div class="chips">
+    <span>Накладная</span><span>Товар</span><span>Продан / Списать</span><span>Сроки</span><span>Excel</span>
+  </div>
+`;
+
+window.__seek = seek;
+window.__scenes = SCENES.map((s) => ({ id: s.id, start: s.start, dur: s.dur }));
+
+// Предпросмотр: ?render=1 отключает живую прокрутку.
+if (!location.search.includes("render=1")) {
+  const t0 = performance.now();
+  const tick = () => {
+    seek(((performance.now() - t0) / 1000) % TOTAL);
+    requestAnimationFrame(tick);
+  };
+  tick();
+} else {
+  seek(0);
+}
+</script>
+</body>
+</html>

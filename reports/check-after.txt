@@ -1,0 +1,29 @@
+﻿OK   parseNumber: пробелы и запятая
+OK   parseInvoiceDate: Date и строки
+OK   parseInvoiceDate: битая дата в raw
+OK   parseInvoiceDate: 31 февраля
+OK   шапка с реквизитами не становится таблицей
+OK   реквизиты без товаров => null
+OK   лист без таблицы пропускается
+OK   пустые строки в середине таблицы
+OK   строка-группа без количества не должна стать товаром
+OK   число вместо текста в колонке наименования
+OK   пустое имя без объединения не становится позицией
+OK   parseNumber: точка как разделитель тысяч
+     {"1.200,50":1200.5,"1.234.567":null}
+OK   parseInvoiceDate: год четырьмя цифрами в конце мусора
+     {"iso":"2026-09-18","raw":null}
+OK   parseInvoiceDate: дата с временем
+     {"iso":"2026-09-18","raw":null}
+OK   findDocumentDate: однозначные день/месяц
+     {"date":"2026-02-03"}
+OK   объединённая по вертикали ячейка наименования
+     {"rows":["3:Чай зелёный","4:Чай зелёный","5:Чабрец"]}
+OK   фикстура invoice-lotos.xlsx
+     {"sheet":"Товары","headerRow":2,"supplier":"","documentDate":"2026-11-12","rows":[{"row":3,"name":"Конфеты шоколадные, 140 г","qty":"24","expiry":"2026-09-18","supplier":"Лотос","warning":null},{"row":4,"name":"Чабрец, 50 г","qty":"10","expiry":"2027-02-01","supplier":"Новый Поставщик","warning":null},{"row":5,"name":"Мёд алтайский, 250 г","qty":"5","expiry":"raw:18.09..29","supplier":"Алфит","warning":"не удалось распознать дату срока"}]}
+OK   фикстура invoice-no-supplier.xlsx
+     {"sheet":"Накладная","headerRow":1,"supplier":"","documentDate":null,"rows":[{"row":2,"name":"Зайчик травяной, 30 г","qty":"","expiry":"2026-12-01","supplier":"","warning":null},{"row":3,"name":"Ромашка, 100 г","qty":"","expiry":"2027-03-05","supplier":"","warning":null}]}
+OK   фикстура накладная-демо.xlsx
+     {"sheet":"Накладная","headerRow":6,"supplier":"ООО Лотос","documentDate":"2026-11-12","rows":[{"row":7,"name":"Чай зелёный «Лотос», 100 г","qty":"24","expiry":"2027-03-01","supplier":"ООО Лотос","warning":null},{"row":8,"name":"Конфеты шоколадные «Белокуриха», 140 г","qty":"12","expiry":"2026-11-20","supplier":"ООО Лотос","warning":null},{"row":9,"name":"Чабрец, 50 г","qty":"10","expiry":"2026-12-05","supplier":"ООО Лотос","warning":null},{"row":10,"name":"Мёд алтайский, 250 г","qty":"5","expiry":"raw:18.09..29","supplier":"ООО Лотос","warning":"не удалось распознать дату срока"},{"row":11,"name":"Бальзам «Кавказский травник», 100 мл","qty":"8","expiry":"2027-01-15","supplier":"ООО Лотос","warning":null}]}
+
+всего 19, провалено 0

@@ -1,0 +1,46 @@
+﻿node.exe : failed to load config from C:\Users\user\Desktop\Excel\vitest.sandbox.config.mjs
+строка:1 знак:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (failed to load ...dbox.config.mjs:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+⎯⎯⎯⎯⎯⎯⎯ Startup Error ⎯⎯⎯⎯⎯⎯⎯⎯
+Error: Build failed with 1 error:
+
+[plugin externalize-deps]
+Error: spawn EPERM
+    at ChildProcess.spawn (node:internal/child_process:458:11)
+    at spawn (node:child_process:813:9)
+    at Object.execFile (node:child_process:349:17)
+    at exec (node:child_process:236:25)
+    at optimizeSafeRealPathSync (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:2483:2)
+    at windowsSafeRealPathSync (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:2469:3)
+    at getRealPath (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:29619:36)
+    at tryResolveRealFileOrType (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:29613:9
+)
+    at tryCleanFsResolve (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:29362:21)
+    at tryFsResolve (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:29355:14)
+    at aggregateBindingErrorsIntoJsError (file:///C:/Users/user/Desktop/Excel/node_modules/rolldown/dist/shared/error-B
+J9uQLIS.mjs:50:18)
+    at unwrapBindingResult (file:///C:/Users/user/Desktop/Excel/node_modules/rolldown/dist/shared/error-BJ9uQLIS.mjs:20
+:128)
+    at #build (file:///C:/Users/user/Desktop/Excel/node_modules/rolldown/dist/shared/rolldown-DWd2aEL4.mjs:146:34)
+    at async bundleConfigFile (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:38097:12)
+    at async bundleAndLoadConfigFile (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:37
+993:18)
+    at async loadConfigFromFile (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:37954:4
+2)
+    at async resolveConfig (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:37555:22)
+    at async resolveConfig (file:///C:/Users/user/Desktop/Excel/node_modules/vitest/dist/chunks/index.Di8au7q4.js:9300:
+25)
+    at async createVitest (file:///C:/Users/user/Desktop/Excel/node_modules/vitest/dist/chunks/cli-api.COfZo8lK.js:1393
+8:17)
+    at async prepareVitest (file:///C:/Users/user/Desktop/Excel/node_modules/vitest/dist/chunks/cli-api.COfZo8lK.js:146
+25:14) {
+  errors: [Getter/Setter]
+}
+
+
+

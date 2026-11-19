@@ -1,0 +1,604 @@
+﻿
+> shelf-life@0.3.0 test:c
+> node --import ./reports/stub-exec.mjs ./node_modules/vitest/vitest.mjs run --pool=threads
+
+
+ RUN  v5.1.0 C:/Users/user/Desktop/Excel
+
+stdout | reports/diag-pdf.test.ts > PDF №2804 > показывает, что видит разборщик
+Warning: Please use the `legacy` build in Node.js environments.
+
+stdout | reports/diag-real.test.ts > реальный PDF: строки как их видит приложение > печатает строки
+Warning: Please use the `legacy` build in Node.js environments.
+
+stdout | reports/diag-pdf.test.ts > PDF №2804 > показывает, что видит разборщик
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+
+ ✓ src/domain/invoice.test.ts (32 tests) 196ms
+stdout | reports/diag-pdf.test.ts > PDF №2804 > показывает, что видит разборщик
+=== Страница 1 (rows=16) ===
+  r1 2:Supplier: Farm Zavod Galen LLC INN
+  r2 2:Invoice No 2804 dated 26.10.2026
+  r3 0:No | 1:Code | 2:Name | 3:Qty | 4:Unit | 5:Price | 6:Amount | 7:Good until
+  r4 0:1 | 1:4 | 2:5 | 3:6 | 4:7 | 5:8
+  r5 0:1 | 1:4660000647252 | 2:Pantalfit-5 Premium for joints, 30 | 3:5 | 4:pcs | 5:365.00 | 6:1825.00 | 7:18.09.2027
+  r6 0:2 | 1:4660000647269 | 2:Pantalfit-6 Premium, 30 bricks x 2 | 3:5 | 4:pcs | 5:356.00 | 6:1780.00 | 7:18.09.2027
+  r7 0:3 | 1:4660000642547 | 2:Sirop 9 Trav dlya glaz 250 ml | 3:5 | 4:pcs | 5:189.00 | 6:945.00 | 7:01.02.2027
+  r8 0:4 | 1:4660000642608 | 2:Sirop 9 Trav dlya pecheni 250 ml | 3:5 | 4:pcs | 5:189.00 | 6:945.00 | 7:01.02.2027
+  r9 0:5 | 1:4660000642585 | 2:Sirop 9 Trav dlya pochek 250 ml | 3:5 | 4:pcs | 5:189.00 | 6:945.00 | 7:01.02.2027
+  r10 0:6 | 1:4660000642578 | 2:Sirop 9 Trav dlya serdtsa 250 ml | 3:5 | 4:pcs | 5:189.00 | 6:945.00 | 7:01.02.2027
+  r11 0:7 | 1:4660000642592 | 2:Sirop 9 Trav dlya sustavov 250 ml | 3:5 | 4:pcs | 5:189.00 | 6:945.00 | 7:01.02.2027
+  r12 0:8 | 1:4660000642875 | 2:BALZAM ALTAY USPOKAIVAYUSHCHIY | 3:5 | 4:pcs | 5:280.00 | 6:1400.00 | 7:18.09..29
+  r13 0:9 | 1:4660000641946 | 2:Balzam zhenskiy (steklo) | 3:5 | 4:pcs | 5:266.00 | 6:1330.00 | 7:01.12.2027
+  r14 0:10 | 1:4660000641939 | 2:Balzam muzhskoy (steklo) | 3:5 | 4:pcs | 5:266.00 | 6:1330.00 | 7:01.12.2027
+  r15 2:Total | 6:13390.00
+  r16 1:Director ______________ | 2:Chief accountant ______________
+
+headerRow = 3
+columns = {"number":0,"code":1,"name":2,"quantity":3,"unit":4,"price":5,"amount":6,"expiry":7}
+rows = 11
+skipped = [4,15]
+   #1 | code="4660000647252" | qty="5" | unit="pcs" | price="365" | amount="1825" | name="Pantalfit-5 Premium for joints, 30 brick"
+   #2 | code="4660000647269" | qty="5" | unit="pcs" | price="356" | amount="1780" | name="Pantalfit-6 Premium, 30 bricks x 2g"
+   #3 | code="4660000642547" | qty="5" | unit="pcs" | price="189" | amount="945" | name="Sirop 9 Trav dlya glaz 250 ml"
+   #4 | code="4660000642608" | qty="5" | unit="pcs" | price="189" | amount="945" | name="Sirop 9 Trav dlya pecheni 250 ml"
+   #5 | code="4660000642585" | qty="5" | unit="pcs" | price="189" | amount="945" | name="Sirop 9 Trav dlya pochek 250 ml"
+   #6 | code="4660000642578" | qty="5" | unit="pcs" | price="189" | amount="945" | name="Sirop 9 Trav dlya serdtsa 250 ml"
+   #7 | code="4660000642592" | qty="5" | unit="pcs" | price="189" | amount="945" | name="Sirop 9 Trav dlya sustavov 250 ml"
+   #8 | code="4660000642875" | qty="5" | unit="pcs" | price="280" | amount="1400" | name="BALZAM ALTAY USPOKAIVAYUSHCHIY"
+   #9 | code="4660000641946" | qty="5" | unit="pcs" | price="266" | amount="1330" | name="Balzam zhenskiy (steklo)"
+   #10 | code="4660000641939" | qty="5" | unit="pcs" | price="266" | amount="1330" | name="Balzam muzhskoy (steklo)"
+   # | code="Director ______________" | qty="" | unit="" | price="" | amount="" | name="Chief accountant ______________"
+
+ ✓ reports/diag-pdf.test.ts (1 test) 342ms
+   ✓ PDF №2804 (1)
+     ✓ показывает, что видит разборщик 340ms
+stdout | reports/diag-all.test.ts > все фикстуры: где живёт «2» > разбирает каждый файл
+Warning: Please use the `legacy` build in Node.js environments.
+
+stdout | reports/diag-real.test.ts > реальный PDF: строки как их видит приложение > печатает строки
+columns={"number":0,"name":1,"code":2,"quantity":3,"unit":4,"price":5,"amount":6}
+src11 | №="1" | name="Конфеты шоколадные \"Кедровое пралине в ш" | code="3956" | qty="20" | unit="шт" | price="430" | amount="8600"
+src12 | №="2" | name="Конфеты шоколадные \"Кедровый микс с брус" | code="1297" | qty="15" | unit="шт" | price="340" | amount="5100"
+src13 | №="3" | name="Конфеты шоколадные \"Кедровый микс с клюк" | code="1082" | qty="15" | unit="шт" | price="340" | amount="5100"
+src14 | №="4" | name="Конфеты шоколадные \"Кедровый микс с обле" | code="1105" | qty="15" | unit="шт" | price="340" | amount="5100"
+src15 | №="5" | name="Конфеты шоколадные \"Кедровый микс с черн" | code="1099" | qty="15" | unit="шт" | price="340" | amount="5100"
+src16 | №="6" | name="Конфеты шоколадные \"Шоколадный зайчик\" с" | code="0870" | qty="10" | unit="шт" | price="200" | amount="2000"
+src18 | №="7" | name="Конфеты шоколадные \"Шоколадный зайчик\" с" | code="0498" | qty="15" | unit="шт" | price="200" | amount="3000"
+src19 | №="8" | name="Шоколад \"Белокуриха\" 55г" | code="1822" | qty="18" | unit="шт" | price="180" | amount="3240"
+src20 | №="9" | name="Шоколад \"Белуха\" 55г" | code="1730" | qty="18" | unit="шт" | price="180" | amount="3240"
+src21 | №="10" | name="Шоколад \"Телецкое озеро\" 55г" | code="1785" | qty="18" | unit="шт" | price="180" | amount="3240"
+
+ ✓ reports/diag-real.test.ts (1 test) 436ms
+   ✓ реальный PDF: строки как их видит приложение (1)
+     ✓ печатает строки 434ms
+stdout | reports/diag-geom.test.ts > геометрия PDF > печатает x/right по строкам
+r1 y=48   129..279 "ОМСКОЕ ОТДЕЛЕНИЕ N 863"   303..323 "БИК"  *339..384 "045209673"
+r2 y=58   129..208 "СБЕРБАНК г. Омск"  *339..439 "30101810900000000673"
+r3 y=62   303..332 "Сч. №"
+r4 y=71   129..192 "Банк получателя"
+r5 y=83   129..151 "ИНН"  *161..211 "0400001746"   230..250 "КПП"  *254..299 "040001001"   303..332 "Сч. №"  *339..439 "40702810702350002755"
+r6 y=96   129..239 "Общество с ограниченно"
+r7 y=106   129..257 "ответственностью \"РИФ "
+r8 y=117   129..174 "Получатель"
+r9 y=147   36..321 "Счет на оплату № 640 о"
+r10 y=176   36..86 "Поставщик"   102..500 "Общество с ограниченно"
+r11 y=188   99..520 "040001001, 649002, Алт"
+r12 y=200   35..90 "(исполнитель):"   99..258 "квартира 2, тел.: 8(96"
+r13 y=217   36..89 "Покупатель"   102..521 "ООО \"САНАТОРИЙ \"РУСЬ\","
+r14 y=229   35..75 "(заказчик):"   99..520 "край, г. Горячий Ключ,"
+r15 y=246   36..89 "Основание:"   99..436 "Договор на поставку ко"
+r16 y=266   44..55 "№"   117..187 "Товар (Услуга)"   262..280 "Код"   311..344 "Кол-во"   360..376 "Ед."   407..431 "Цена"   478..511 "Сумма"
+r17 y=275  *48..51 "1"  *150..153 "2"  *269..272 "3"  *326..329 "4"  *366..370 "5"  *418..421 "6"  *493..496 "7"
+r18 y=285  *47..52 "1"   67..231 "Конфеты шоколадные \"Ке"  *240..258 "3956"  *341..350 "20"   354..364 "шт"  *428..453 "430,00"  *501..533 "8 600,00"
+r19 y=294   67..125 "шоколаде\" 140г"
+r20 y=305  *47..52 "2"   67..219 "Конфеты шоколадные \"Ке"  *240..258 "1297"  *341..350 "15"   354..364 "шт"  *428..453 "340,00"  *501..533 "5 100,00"
+r21 y=314   67..127 "брусникой\" 100г"
+r22 y=325  *47..52 "3"   67..219 "Конфеты шоколадные \"Ке"  *240..258 "1082"  *341..350 "15"   354..364 "шт"  *428..453 "340,00"  *501..533 "5 100,00"
+r23 y=334   67..119 "клюквой\" 100г"
+r24 y=345  *47..52 "4"   67..219 "Конфеты шоколадные \"Ке"  *240..257 "1105"  *341..350 "15"   354..364 "шт"  *428..453 "340,00"  *501..533 "5 100,00"
+r25 y=354   67..128 "облепихой\" 100г"
+r26 y=365  *47..52 "5"   67..219 "Конфеты шоколадные \"Ке"  *240..258 "1099"  *341..350 "15"   354..364 "шт"  *428..453 "340,00"  *501..533 "5 100,00"
+r27 y=374   67..123 "черникой\" 100г"
+r28 y=385  *47..52 "6"   67..234 "Конфеты шоколадные \"Шо"  *240..258 "0870"  *341..350 "10"   354..364 "шт"  *428..453 "200,00"  *501..533 "2 000,00"
+r29 y=394   67..231 "с начинкой из сгущенно"
+r30 y=403   67..83 "106г"
+r31 y=414  *47..52 "7"   67..234 "Конфеты шоколадные \"Шо"  *240..258 "0498"  *341..350 "15"   354..364 "шт"  *428..453 "200,00"  *501..533 "3 000,00"
+r32 y=423   67..214 "с курагой, черносливом"
+r33 y=434  *47..52 "8"   67..166 "Шоколад \"Белокуриха\" 5"  *240..258 "1822"  *341..350 "18"   354..364 "шт"  *428..453 "180,00"  *501..533 "3 240,00"
+r34 y=445  *47..52 "9"   67..149 "Шоколад \"Белуха\" 55г"  *240..258 "1730"  *341..350 "18"   354..364 "шт"  *428..453 "180,00"  *501..533 "3 240,00"
+r35 y=456  *45..54 "10"   67..181 "Шоколад \"Телецкое озер"  *240..258 "1785"  *341..350 "18"   354..364 "шт"  *428..453 "180,00"  *501..533 "3 240,00"
+r36 y=467  *337..350 "159"  *508..533 "43 720"
+r37 y=485   351..382 "Итого:"  *488..532 "43 720,00"
+r38 y=498   279..382 "В том числе НДС 5%:"  *493..532 "2 081,93"
+r39 y=510   306..382 "Всего к оплате:"  *488..532 "43 720,00"
+r40 y=523   342..382 "Вес (кг):"  *526..532 "8"
+r41 y=544   36..260 "Всего наименований 10,"
+r42 y=557   36..303 "Сорок три тысячи семьс"
+r43 y=581   36..335 "Оплата данного счета о"
+r44 y=593   36..469 "Уведомление об оплате "
+r45 y=605   36..527 "Товар отпускается по ф"
+r46 y=639   36..105 "Руководитель"   272..318 "Ротарь П. Н."
+r47 y=648   180..202 "подпись"   356..419 "расшифровка подписи"
+r48 y=672   36..86 "Бухгалтер"   272..316 "Ротарь П.Н."
+r49 y=682   180..202 "подпись"   356..419 "расшифровка подписи"
+r50 y=692   240..257 "М.П."
+
+ ✓ reports/diag-geom.test.ts (1 test) 560ms
+   ✓ геометрия PDF (1)
+     ✓ печатает x/right по строкам 553ms
+stdout | reports/diag-2804.test.ts > накладная №2804 > показывает, что видит разборщик
+headerRow = 22
+columns = {"number":0,"name":2,"code":23,"quantity":34,"unit":40,"price":43,"discount":48,"amount":53}
+supplier = "Общество с Ограниченной Ответственностью \"Фармацевтический завод \"Гален\""
+rows = 16
+skipped = [23,40]
+
+  #1 | name="Панталфит-5 Премиум (для суставов), 30 брикто" | code="4660000647252" | qty="5" | unit="шт" | price="365" | amount="1770.25" | warn=null
+  #2 | name="Панталфит-6 Премиум (при хронической усталост" | code="4660000647269" | qty="5" | unit="шт" | price="356" | amount="1726.6" | warn=null
+  #3 | name="Сироп на растительном сырье \"9 Трав\" для глаз" | code="4660000642547" | qty="5" | unit="шт" | price="189" | amount="916.65" | warn=null
+  #4 | name="Сироп на растительном сырье \"9 Трав\" для пече" | code="4660000642608" | qty="5" | unit="шт" | price="189" | amount="916.65" | warn=null
+  #5 | name="Сироп на растительном сырье \"9 Трав\" для поче" | code="4660000642585" | qty="5" | unit="шт" | price="189" | amount="916.65" | warn=null
+  #6 | name="Сироп на растительном сырье \"9 Трав\" для серд" | code="4660000642578" | qty="5" | unit="шт" | price="189" | amount="916.65" | warn=null
+  #7 | name="Сироп на растительном сырье \"9 Трав\" для суст" | code="4660000642592" | qty="5" | unit="шт" | price="189" | amount="916.65" | warn=null
+  #8 | name="Биологически активная добавка к пище \"БАЛЬЗАМ" | code="4660000642875" | qty="5" | unit="шт" | price="280" | amount="1358" | warn=null
+  #9 | name="Бальзам женский (стекло)" | code="4660000641946" | qty="5" | unit="шт" | price="266" | amount="1290.1" | warn=null
+  #10 | name="Бальзам мужской (стекло)" | code="4660000641939" | qty="5" | unit="шт" | price="266" | amount="1290.1" | warn=null
+  #11 | name="Сироп на растительном сырье с соком растений " | code="4660000649119" | qty="10" | unit="шт" | price="275" | amount="2667.5" | warn=null
+  #12 | name="Набор конфет «Кедровый грильяж в ягодной пудр" | code="4660000649850" | qty="10" | unit="шт" | price="332" | amount="3220.4" | warn=null
+  #13 | name="Крем \"Фитол-8\" Псоризан-Fito\" для тела, 75 г" | code="4607174144132" | qty="10" | unit="шт" | price="215.24" | amount="2152.4" | warn=null
+  #14 | name="Крем-гель косметический \"ГерпеSOS\" 5 мл" | code="4607174145245" | qty="11" | unit="шт" | price="112.38" | amount="1236.18" | warn=null
+  #15 | name="Крем-гель \"МикозоФит\" 10 мл" | code="4607174145771" | qty="10" | unit="шт" | price="155.24" | amount="1552.4" | warn=null
+  #16 | name="Крем-гель \"ПапилломаФит\" 5 мл" | code="4607174144255" | qty="10" | unit="шт" | price="167.62" | amount="1676.2" | warn=null
+
+ ✓ reports/diag-2804.test.ts (1 test) 257ms
+stdout | reports/diag-all.test.ts > все фикстуры: где живёт «2» > разбирает каждый файл
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+
+ ✓ src/domain/expiry.test.ts (10 tests) 63ms
+stdout | reports/diag-all.test.ts > все фикстуры: где живёт «2» > разбирает каждый файл
+--- invoice-2804.pdf GRID ---
+   r1 2:Supplier: Farm Zavod Galen LLC
+   r2 2:Invoice No 2804 dated 26.10.20
+   r3 0:No | 1:Code | 2:Name | 3:Qty | 4:Unit | 5:Price | 6:Amount | 7:Good until
+   r4 0:1 | 1:4 | 2:5 | 3:6 | 4:7 | 5:8
+   r5 0:1 | 1:4660000647252 | 2:Pantalfit-5 Premium for joints | 3:5 | 4:pcs | 5:365.00 | 6:1825.00 | 7:18.09.2027
+   r6 0:2 | 1:4660000647269 | 2:Pantalfit-6 Premium, 30 bricks | 3:5 | 4:pcs | 5:356.00 | 6:1780.00 | 7:18.09.2027
+   r7 0:3 | 1:4660000642547 | 2:Sirop 9 Trav dlya glaz 250 ml | 3:5 | 4:pcs | 5:189.00 | 6:945.00 | 7:01.02.2027
+   r8 0:4 | 1:4660000642608 | 2:Sirop 9 Trav dlya pecheni 250  | 3:5 | 4:pcs | 5:189.00 | 6:945.00 | 7:01.02.2027
+   r9 0:5 | 1:4660000642585 | 2:Sirop 9 Trav dlya pochek 250 m | 3:5 | 4:pcs | 5:189.00 | 6:945.00 | 7:01.02.2027
+   r10 0:6 | 1:4660000642578 | 2:Sirop 9 Trav dlya serdtsa 250  | 3:5 | 4:pcs | 5:189.00 | 6:945.00 | 7:01.02.2027
+   r11 0:7 | 1:4660000642592 | 2:Sirop 9 Trav dlya sustavov 250 | 3:5 | 4:pcs | 5:189.00 | 6:945.00 | 7:01.02.2027
+   r12 0:8 | 1:4660000642875 | 2:BALZAM ALTAY USPOKAIVAYUSHCHIY | 3:5 | 4:pcs | 5:280.00 | 6:1400.00 | 7:18.09..29
+   r13 0:9 | 1:4660000641946 | 2:Balzam zhenskiy (steklo) | 3:5 | 4:pcs | 5:266.00 | 6:1330.00 | 7:01.12.2027
+   r14 0:10 | 1:4660000641939 | 2:Balzam muzhskoy (steklo) | 3:5 | 4:pcs | 5:266.00 | 6:1330.00 | 7:01.12.2027
+   r15 2:Total | 6:13390.00
+   r16 1:Director ______________ | 2:Chief accountant _____________
+--- invoice-2804.pdf / Страница 1 ---
+   headerRow=3 columns={"number":0,"code":1,"name":2,"quantity":3,"unit":4,"price":5,"amount":6,"expiry":7}
+   rows=11 skipped=[4,15]
+   src5 name="Pantalfit-5 Premium for joints, " code="4660000647252" qty="5" price="365" amount="1825"
+   src6 name="Pantalfit-6 Premium, 30 bricks x" code="4660000647269" qty="5" price="356" amount="1780"   <<< ДВОЙКА В: number
+   src7 name="Sirop 9 Trav dlya glaz 250 ml" code="4660000642547" qty="5" price="189" amount="945"
+   src8 name="Sirop 9 Trav dlya pecheni 250 ml" code="4660000642608" qty="5" price="189" amount="945"
+   src9 name="Sirop 9 Trav dlya pochek 250 ml" code="4660000642585" qty="5" price="189" amount="945"
+   src10 name="Sirop 9 Trav dlya serdtsa 250 ml" code="4660000642578" qty="5" price="189" amount="945"
+   src11 name="Sirop 9 Trav dlya sustavov 250 m" code="4660000642592" qty="5" price="189" amount="945"
+   src12 name="BALZAM ALTAY USPOKAIVAYUSHCHIY" code="4660000642875" qty="5" price="280" amount="1400"
+   src13 name="Balzam zhenskiy (steklo)" code="4660000641946" qty="5" price="266" amount="1330"
+   src14 name="Balzam muzhskoy (steklo)" code="4660000641939" qty="5" price="266" amount="1330"
+   src16 name="Chief accountant ______________" code="Director ______________" qty="" price="" amount=""
+--- invoice-lotos.xlsx / Товары ---
+   headerRow=2 columns={"name":0,"supplier":1,"expiry":2,"quantity":3}
+   rows=3 skipped=[]
+   src3 name="Конфеты шоколадные, 140 г" code="" qty="24" price="" amount=""
+   src4 name="Чабрец, 50 г" code="" qty="10" price="" amount=""
+   src5 name="Мёд алтайский, 250 г" code="" qty="5" price="" amount=""
+--- invoice-lotos.xlsx / Лист1 ---
+   таблица не найдена
+--- invoice-no-supplier.xlsx / Накладная ---
+   headerRow=1 columns={"name":0,"expiry":1}
+   rows=2 skipped=[]
+   src2 name="Зайчик травяной, 30 г" code="" qty="" price="" amount=""
+   src3 name="Ромашка, 100 г" code="" qty="" price="" amount=""
+--- Заказ Гринфито.xlsx / ГРИНФИТО ---
+   headerRow=2 columns={"number":0,"name":1,"quantity":5,"price":7,"amount":8,"expiry":9}
+   rows=128 skipped=[3]
+   src4 name="Бальзамы \"Первоцветы здоровья\"" code="" qty="Бальзамы \"Первоцветы здоровья\"" price="Бальзамы \"Первоцветы здоровья\"" amount="Подробнее о продукте"
+   src5 name="Бальзам \r\n\"Активный иммунитет\"\r\n" code="" qty="10" price="190" amount="0"
+   src6 name="Бальзам \r\n\"Женское здоровье\"\r\nдл" code="" qty="10" price="190" amount="0"
+   src7 name="Бальзам \r\n\"Здоровая печень\"\r\nдля" code="" qty="10" price="190" amount="0"
+   src8 name="Бальзам \r\n\"Крепкие суставы\"\r\nдля" code="" qty="10" price="190" amount="0"
+   src9 name="Бальзам \r\n\"Легкое дыхание\" \r\nдля" code="" qty="10" price="190" amount="0"
+   src10 name="Бальзам \r\n\"Мужская сила\"\r\nдля си" code="" qty="10" price="190" amount="0"
+   src11 name="Бальзам \r\n\"Сердце и сосуды\"\r\nдля" code="" qty="10" price="190" amount="0"
+   src12 name="СЕЛЕКТИВНЫЕ БИОКОМПЛЕКСЫ\r\nсерии " code="" qty="СЕЛЕКТИВНЫЕ БИОКОМПЛЕКСЫ\r\nсерии \"Detox 8 PRO Health\"" price="8" amount="Подробнее о продукте"
+   src13 name="Селективный биокомплекс\r\nDeAlco " code="" qty="12" price="450" amount="0"
+   src14 name="Селективный биокомплекс\r\nDeFAT 8" code="" qty="12" price="450" amount="4500"
+   src15 name="Селективный биокомплекс\r\nDeSmoke" code="" qty="12" price="450" amount="4500"
+   src16 name="Селективный биокомплекс\r\nDeSugar" code="" qty="12" price="450" amount="4500"
+   src17 name="Селективный биокомплекс\r\nDeLymph" code="" qty="12" price="450" amount="0"
+   src18 name="Селективный биокомплекс\r\nDeNefro" code="" qty="12" price="450" amount="0"
+   src19 name="СЕЛЕКТИВНЫЕ БИОКОМПЛЕКСЫ\r\n\"ЭВИТО" code="" qty="СЕЛЕКТИВНЫЕ БИОКОМПЛЕКСЫ\r\n\"ЭВИТОН ПРО\"" price="СЕЛЕКТИВНЫЕ БИОКОМПЛЕКСЫ\r\n\"ЭВИТОН ПРО\"" amount="Подробнее о продукте"
+   src20 name="Селективный биокомплекс\r\nEVITON " code="" qty="12" price="450" amount="0"
+   src21 name="Селективный биокомплекс\r\nEVITON " code="" qty="12" price="450" amount="0"
+   src22 name="Селективный биокомплекс\r\nEVITON " code="" qty="12" price="450" amount="0"
+   src23 name="Селективный биокомплекс\r\nEVITON " code="" qty="12" price="450" amount="0"
+   src24 name="Селективный биокомплекс\r\nEVITON " code="" qty="12" price="450" amount="0"
+   src25 name="АДАПТИВНЫЕ НУТРИКОМПЛЕКСЫ \r\n\"Clo" code="" qty="АДАПТИВНЫЕ НУТРИКОМПЛЕКСЫ \r\n\"Clover Labs\"" price="АДАПТИВНЫЕ НУТРИКОМПЛЕКСЫ \r\n\"Clover Labs\"" amount="Подробнее о продукте"
+   src26 name="Адаптивный нутрикомплекс\r\nANTI A" code="" qty="14" price="400" amount="0"
+   src27 name="Адаптивный нутрикомплекс\r\nARTHRO" code="" qty="14" price="400" amount="0"
+   src28 name="Адаптивный нутрикомплекс\r\nBRONCH" code="" qty="14" price="400" amount="0"
+   src29 name="Адаптивный нутрикомплекс\r\nIMMUNO" code="" qty="14" price="400" amount="0"
+   src30 name="Адаптивный нутрикомплекс\r\nNEIRO " code="" qty="14" price="400" amount="0"
+   src31 name="Адаптивный нутрикомплекс\r\nWOMAN " code="" qty="14" price="400" amount="0"
+   src32 name="ПАНТОГЕМАТОГЕН" code="" qty="ПАНТОГЕМАТОГЕН" price="ПАНТОГЕМАТОГЕН" amount="Подробнее о продукте"
+   src33 name="биоконцентрат\r\nПантогематоген Ex" code="" qty="30" price="420" amount="0"
+   src34 name="биоконцентрат\r\nПантогематоген Ar" code="" qty="30" price="440" amount="0"
+   src35 name="биоконцентрат\r\nПантогематоген Me" code="" qty="30" price="460" amount="0"
+   src36 name="биоактивные концентраты" code="" qty="биоактивные концентраты" price="биоактивные концентраты" amount="Подробнее о продукте"
+   src37 name="Кордицепс Синенсис\r\nТМ CloverLab" code="" qty="15" price="550" amount="0"
+   src38 name="биоактивный фитокомплекс серии R" code="" qty="биоактивный фитокомплекс серии ReBodyBorn (Твоё новое тело)" price="биоактивный фитокомплекс серии ReBodyBorn (Твоё новое тело)" amount="Подробнее о продукте"
+   src39 name="Re: Energy - Активация энергии и" code="" qty="14" price="420" amount="0"
+   src40 name="Re: Liver – Защита печени и желч" code="" qty="14" price="420" amount="0"
+   src41 name="Re: Neiro – Защита мозгового кро" code="" qty="14" price="420" amount="0"
+   src42 name="Re: Power – Восстановление силы " code="" qty="14" price="420" amount="0"
+   src43 name="Re: Slim – Активное похудение и " code="" qty="14" price="420" amount="0"
+   src44 name="детский биоактивный фитокомплекс" code="" qty="детский биоактивный фитокомплекс Vita Kids" price="детский биоактивный фитокомплекс Vita Kids" amount="Подробнее о продукте"
+   src45 name="Vita Kids Immuno\r\nдля укрепления" code="" qty="14" price="380" amount="0"
+   src46 name="Vita Kids IQ-vision\r\nдля улучшен" code="" qty="14" price="380" amount="0"
+   src47 name="Эликсиры" code="" qty="Эликсиры" price="Эликсиры" amount="Подробнее о продукте"
+   src48 name="Эликсир \"Афродита\"" code="" qty="15" price="400" amount="0"
+   src49 name="Эликсир \"Афродита\"" code="" qty="" price="650" amount="0"
+   src50 name="Эликсир \"Витаминный\"" code="" qty="15" price="390" amount="0"
+   src51 name="Эликсир \"Витаминный\"" code="" qty="" price="640" amount="0"
+   src52 name="Эликсир \"Гельмицид\"" code="" qty="15" price="420" amount="0"
+   src53 name="Эликсир \"Гельмицид\"" code="" qty="" price="650" amount="0"
+   src54 name="Эликсир \"Горное мумиё\"" code="" qty="15" price="400" amount="0"
+   src55 name="Эликсир \"Горное мумиё\"" code="" qty="" price="650" amount="0"
+   src56 name="Эликсир \"Иммунный\"" code="" qty="15" price="390" amount="0"
+   src57 name="Эликсир \"Иммунный\"" code="" qty="" price="640" amount="0"
+   src58 name="Эликсир \"Крепкие суставы\"" code="" qty="15" price="420" amount="0"
+   src59 name="Эликсир \"Крепкие суставы\"" code="" qty="" price="650" amount="0"
+   src60 name="Эликсир \"Легкое дыхание\"" code="" qty="15" price="390" amount="0"
+   src61 name="Эликсир \"Легкое дыхание\"" code="" qty="" price="640" amount="0"
+   src62 name="Эликсир \"Панто-Provite\"" code="" qty="15" price="420" amount="0"
+   src63 name="Эликсир \"Панто-Provite\"" code="" qty="" price="660" amount="0"
+   src64 name="Эликсир \"Прополис Форте\"" code="" qty="15" price="390" amount="0"
+   src65 name="Эликсир \"Прополис Форте\"" code="" qty="" price="640" amount="0"
+   src66 name="Эликсир \"Релакс\"" code="" qty="15" price="390" amount="0"
+   src67 name="Эликсир \"Релакс\"" code="" qty="" price="640" amount="0"
+   src68 name="Эликсир \"Тонус\"" code="" qty="15" price="400" amount="0"
+   src69 name="Эликсир \"Тонус\"" code="" qty="" price="650" amount="0"
+   src70 name="Эликсир \"Чага\"" code="" qty="15" price="420" amount="0"
+   src71 name="Эликсир \"Чага\"" code="" qty="" price="650" amount="0"
+   src72 name="Эликсир \"Энергия жизни\"" code="" qty="15" price="390" amount="0"
+   src73 name="Эликсир \"Энергия жизни\"" code="" qty="" price="640" amount="0"
+   src74 name="жидкий концентрат для приготовле" code="" qty="жидкий концентрат для приготовления напитка\r\nна основе натурального сока и трав\r\nVita Pulse" price="жидкий концентрат для приготовления напитка\r\nна основе натурального сока и трав\r\nVita Pulse" amount="Подробнее о продукте"
+   src75 name="Vita Pulse. МИКС ВКУСОВ\r\n6 видов" code="" qty="12" price="198" amount="1980"
+   src76 name="Vita Pulse. Амаретто\r\n12 стиков " code="" qty="12" price="198" amount="0"
+   src77 name="Vita Pulse. Барбарис - Брусника " code="" qty="12" price="198" amount="0"
+   src78 name="Vita Pulse. Имбирь - Корица \r\n12" code="" qty="12" price="198" amount="0"
+   src79 name="Vita Pulse. Лимон - Мята \r\n12 ст" code="" qty="12" price="198" amount="0"
+   src80 name="Vita Pulse. Малина - Розмарин \r\n" code="" qty="12" price="198" amount="0"
+   src81 name="Vita Pulse. Чёрная смородина\r\n12" code="" qty="12" price="198" amount="0"
+   src82 name="Экстракты серии \"Mushrooms\"" code="" qty="Экстракты серии \"Mushrooms\"" price="Экстракты серии \"Mushrooms\"" amount="Подробнее о продукте"
+   src83 name="Экстракт\r\nЕжовик гребенчатый\r\n60" code="" qty="16" price="320" amount="0"
+   src84 name="Экстракт\r\nКордицепс Синенсис\r\n60" code="" qty="16" price="330" amount="0"
+   src85 name="Экстракт\r\nЛисичка обыкновенная\r\n" code="" qty="16" price="320" amount="0"
+   src86 name="Экстракт\r\nЧага березовая\r\n60 кап" code="" qty="16" price="330" amount="0"
+   src87 name="Нативный биокомплекс \"ДИГИДРОКВЕ" code="" qty="Нативный биокомплекс \"ДИГИДРОКВЕРЦЕТИН\"" price="Нативный биокомплекс \"ДИГИДРОКВЕРЦЕТИН\"" amount="Подробнее о продукте"
+   src88 name="нативный комплекс Дигидрокверцет" code="" qty="16" price="" amount="0"
+   src89 name="нативный комплекс Дигидрокверцет" code="" qty="16" price="" amount="0"
+   src90 name="нативный комплекс Дигидрокверцет" code="" qty="16" price="" amount="0"
+   src91 name="нативный комплекс Дигидрокверцет" code="" qty="16" price="" amount="0"
+   src92 name="МУМИЁ \"Бальзам гор\"" code="" qty="МУМИЁ \"Бальзам гор\"" price="МУМИЁ \"Бальзам гор\"" amount="МУМИЁ \"Бальзам гор\""
+   src93 name="Мумие \"Бальзам гор\", таблетки, 0" code="" qty="500" price="78" amount="0"
+   src94 name="Мумие \"Бальзам гор\", таблетки, 0" code="" qty="500" price="138" amount="0"
+   src95 name="Мумие \"Бальзам гор\", капсулы, 0," code="" qty="72" price="210" amount="0"
+   src96 name="Мумие \"Бальзам гор\", НА КУРС кап" code="" qty="30" price="370" amount="0"
+   src97 name="Фито и травяные сборы \"Фарм-прод" code="" qty="Фито и травяные сборы \"Фарм-продукт\"" price="Фито и травяные сборы \"Фарм-продукт\"" amount="Фито и травяные сборы \"Фарм-продукт\""
+   src98 name="Фитосбор \"Йога\" (20 ф/п по 1,5г)" code="" qty="50" price="130" amount="0"
+   src99 name="Фитосбор \"Слим\" (20 ф/п по 1,5г)" code="" qty="50" price="120" amount="0"
+   src100 name="Фитосбор \"Фитнесс\" (20 ф/п по 1," code="" qty="50" price="115" amount="0"
+   src101 name="Травяной чай Горный Алтай\r\nс Пан" code="" qty="50" price="100" amount="0"
+   src102 name="Травяной чай Горный Алтай\r\nс Пан" code="" qty="60" price="265" amount="0"
+   src103 name="травяные сборы РОССЫПЬ 100гр" code="" qty="травяные сборы РОССЫПЬ 100гр" price="100" amount="100"
+   src104 name="Травяной сбор \r\n\"Гинекологически" code="" qty="90" price="190" amount="0"
+   src105 name="Травяной сбор \r\n\"Гипертония\"" code="" qty="90" price="190" amount="0"
+   src106 name="Травяной сбор\r\n\"Здоровые суставы" code="" qty="90" price="190" amount="0"
+   src107 name="Травяной сбор \r\n\"Иммунный\"" code="" qty="90" price="190" amount="0"
+   src108 name="Травяной сбор \r\n\"Легочный\"" code="" qty="90" price="190" amount="0"
+   src109 name="Травяной сбор \r\n\"Печень\"" code="" qty="90" price="190" amount="0"
+   src110 name="Травяной сбор \r\n\"Поджелудочная ж" code="" qty="90" price="190" amount="0"
+   src111 name="Травяной сбор \r\n\"Почки мочевывод" code="" qty="90" price="190" amount="0"
+   src112 name="Травяной сбор \r\n\"Простатит\"" code="" qty="90" price="190" amount="0"
+   src113 name="Травяной сбор \r\n\"Сахарный диабет" code="" qty="90" price="190" amount="0"
+   src114 name="Травяной сбор \r\n\"Сердечно-сосуди" code="" qty="90" price="190" amount="0"
+   src115 name="Травяной сбор \r\n\"Успокоительный\"" code="" qty="90" price="190" amount="0"
+   src116 name="Травяной сбор \r\n\"Чистые сосуды\"" code="" qty="90" price="190" amount="0"
+   src117 name="травяные сборы ФИЛЬТР-ПАКЕТ 60шт" code="" qty="травяные сборы ФИЛЬТР-ПАКЕТ 60шт" price="60" amount="60"
+   src118 name="Травяной сбор \r\n\"Витаминный\"" code="" qty="60" price="210" amount="0"
+   src119 name="Травяной сбор \r\n\"Гинекологически" code="" qty="60" price="210" amount="0"
+   src120 name="Травяной сбор \r\n\"Гипертония\"" code="" qty="60" price="210" amount="0"
+   src121 name="Травяной сбор\r\n\"Здоровые суставы" code="" qty="60" price="210" amount="0"
+   src122 name="Травяной сбор \r\n\"Иммунный\"" code="" qty="60" price="210" amount="0"
+   src123 name="Травяной сбор \r\n\"Легочный\"" code="" qty="60" price="210" amount="0"
+   src124 name="Травяной сбор \r\n\"Печень\"" code="" qty="60" price="210" amount="0"
+   src125 name="Травяной сбор \r\n\"Поджелудочная ж" code="" qty="60" price="210" amount="0"
+   src126 name="Травяной сбор \r\n\"Почки мочевывод" code="" qty="60" price="210" amount="0"
+   src127 name="Травяной сбор \r\n\"Простатит\"" code="" qty="60" price="210" amount="0"
+   src128 name="Травяной сбор \r\n\"Сахарный диабет" code="" qty="60" price="210" amount="0"
+   src129 name="Травяной сбор \r\n\"Сердечно-сосуди" code="" qty="60" price="210" amount="0"
+   src130 name="Травяной сбор \r\n\"Успокоительный\"" code="" qty="60" price="210" amount="0"
+   src131 name="Травяной сбор \r\n\"Чистые сосуды\"" code="" qty="60" price="210" amount="0"
+--- Счет-2804.xlsx / Лист_1 ---
+   headerRow=22 columns={"number":0,"name":2,"code":23,"quantity":34,"unit":40,"price":43,"discount":48,"amount":53}
+   rows=16 skipped=[23,40]
+   src24 name="Панталфит-5 Премиум (для суставо" code="4660000647252" qty="5" price="365" amount="1770.25"
+   src25 name="Панталфит-6 Премиум (при хрониче" code="4660000647269" qty="5" price="356" amount="1726.6"   <<< ДВОЙКА В: number
+   src26 name="Сироп на растительном сырье \"9 Т" code="4660000642547" qty="5" price="189" amount="916.65"
+   src27 name="Сироп на растительном сырье \"9 Т" code="4660000642608" qty="5" price="189" amount="916.65"
+   src28 name="Сироп на растительном сырье \"9 Т" code="4660000642585" qty="5" price="189" amount="916.65"
+   src29 name="Сироп на растительном сырье \"9 Т" code="4660000642578" qty="5" price="189" amount="916.65"
+   src30 name="Сироп на растительном сырье \"9 Т" code="4660000642592" qty="5" price="189" amount="916.65"
+   src31 name="Биологически активная добавка к " code="4660000642875" qty="5" price="280" amount="1358"
+   src32 name="Бальзам женский (стекло)" code="4660000641946" qty="5" price="266" amount="1290.1"
+   src33 name="Бальзам мужской (стекло)" code="4660000641939" qty="5" price="266" amount="1290.1"
+   src34 name="Сироп на растительном сырье с со" code="4660000649119" qty="10" price="275" amount="2667.5"
+   src35 name="Набор конфет «Кедровый грильяж в" code="4660000649850" qty="10" price="332" amount="3220.4"
+   src36 name="Крем \"Фитол-8\" Псоризан-Fito\" дл" code="4607174144132" qty="10" price="215.24" amount="2152.4"
+   src37 name="Крем-гель косметический \"ГерпеSO" code="4607174145245" qty="11" price="112.38" amount="1236.18"
+   src38 name="Крем-гель \"МикозоФит\" 10 мл" code="4607174145771" qty="10" price="155.24" amount="1552.4"
+   src39 name="Крем-гель \"ПапилломаФит\" 5 мл" code="4607174144255" qty="10" price="167.62" amount="1676.2"
+
+ ✓ src/db/repo.write.test.ts (8 tests) 156ms
+ ✓ src/db/suppliers.test.ts (10 tests) 279ms
+ ✓ src/domain/export-xlsx.test.ts (11 tests) 109ms
+ ✓ src/domain/invoice.fixtures.test.ts (6 tests) 1292ms
+   ✓ золотой тест: фикстуры Excel (6)
+     ✓ разбирает «Учёт сроков хранения.xlsm» 782ms
+ ✓ src/lib/xlsx.test.ts (8 tests) 129ms
+ ✓ src/domain/week-groups.test.ts (3 tests) 11ms
+ ✓ src/db/repo.test.ts (10 tests) 16ms
+ ✓ src/domain/groups.test.ts (14 tests) 27ms
+ ✓ src/domain/chestny-znak.test.ts (9 tests) 9ms
+stdout | reports/diag-all.test.ts > все фикстуры: где живёт «2» > разбирает каждый файл
+--- Счет-на-оплату-реальный.pdf GRID ---
+   r1 1:ОМСКОЕ ОТДЕЛЕНИЕ N 8634 ПАО СБ | 3:БИК | 4:045209673
+   r2 1:Банк получателя | 3:Сч. № | 5:30101810900000000673
+   r3 1:ИНН 0400001746 Общество с огра | 2:КПП 040001001 | 3:Сч. № | 5:40702810702350002755
+   r4 1:ответственностью "РИФ И КО" По
+   r5 1:Счет на оплату № 640 от 13 июл
+   r6 1:Поставщик Общество с ограничен
+   r7 1:(исполнитель): квартира 2, тел
+   r8 0:(заказчик): | 1:край, г. Горячий Ключ, ул. Лер
+   r9 0:№ | 1:Товар (Услуга) | 2:Код | 3:Кол-во | 4:Ед. | 5:Цена | 6:Сумма
+   r10 0:1 | 1:2 | 2:3 | 3:4 | 4:5 | 5:6 | 6:7
+   r11 0:1 | 1:Конфеты шоколадные "Кедровое п | 2:3956 | 3:20 | 4:шт | 5:430,00 | 6:8 600,00
+   r12 0:2 | 1:Конфеты шоколадные "Кедровый м | 2:1297 | 3:15 | 4:шт | 5:340,00 | 6:5 100,00
+   r13 0:3 | 1:Конфеты шоколадные "Кедровый м | 2:1082 | 3:15 | 4:шт | 5:340,00 | 6:5 100,00
+   r14 0:4 | 1:Конфеты шоколадные "Кедровый м | 2:1105 | 3:15 | 4:шт | 5:340,00 | 6:5 100,00
+   r15 0:5 | 1:Конфеты шоколадные "Кедровый м | 2:1099 | 3:15 | 4:шт | 5:340,00 | 6:5 100,00
+   r16 0:6 | 1:Конфеты шоколадные "Шоколадный | 2:0870 | 3:10 | 4:шт | 5:200,00 | 6:2 000,00
+   r17 1:106г
+   r18 0:7 | 1:Конфеты шоколадные "Шоколадный | 2:0498 | 3:15 | 4:шт | 5:200,00 | 6:3 000,00
+   r19 0:8 | 1:Шоколад "Белокуриха" 55г | 2:1822 | 3:18 | 4:шт | 5:180,00 | 6:3 240,00
+   r20 0:9 | 1:Шоколад "Белуха" 55г | 2:1730 | 3:18 | 4:шт | 5:180,00 | 6:3 240,00
+   r21 0:10 | 1:Шоколад "Телецкое озеро" 55г | 2:1785 | 3:18 | 4:шт | 5:180,00 | 6:3 240,00
+   r22 3:159 | 6:43 720
+   r23 4:Итого: | 6:43 720,00
+   r24 4:В том числе НДС 5%: | 6:2 081,93
+   r25 4:Всего к оплате: | 6:43 720,00
+   r26 4:Вес (кг): | 6:8
+   r27 1:Всего наименований 10, на сумм
+   r28 1:Оплата данного счета означает 
+   r29 1:Товар отпускается по факту при
+   r30 1:Руководитель подпись | 2:Ротарь П. Н. | 4:расшифровка подписи
+   r31 1:Бухгалтер подпись | 2:Ротарь П.Н. | 4:расшифровка подписи
+   r32 2:М.П.
+--- Счет-на-оплату-реальный.pdf / Страница 1 ---
+   headerRow=9 columns={"number":0,"name":1,"code":2,"quantity":3,"unit":4,"price":5,"amount":6}
+   rows=10 skipped=[10,17,22]
+   src11 name="Конфеты шоколадные \"Кедровое пра" code="3956" qty="20" price="430" amount="8600"
+   src12 name="Конфеты шоколадные \"Кедровый мик" code="1297" qty="15" price="340" amount="5100"   <<< ДВОЙКА В: number
+   src13 name="Конфеты шоколадные \"Кедровый мик" code="1082" qty="15" price="340" amount="5100"
+   src14 name="Конфеты шоколадные \"Кедровый мик" code="1105" qty="15" price="340" amount="5100"
+   src15 name="Конфеты шоколадные \"Кедровый мик" code="1099" qty="15" price="340" amount="5100"
+   src16 name="Конфеты шоколадные \"Шоколадный з" code="0870" qty="10" price="200" amount="2000"
+   src18 name="Конфеты шоколадные \"Шоколадный з" code="0498" qty="15" price="200" amount="3000"
+   src19 name="Шоколад \"Белокуриха\" 55г" code="1822" qty="18" price="180" amount="3240"
+   src20 name="Шоколад \"Белуха\" 55г" code="1730" qty="18" price="180" amount="3240"
+   src21 name="Шоколад \"Телецкое озеро\" 55г" code="1785" qty="18" price="180" amount="3240"
+--- Счет-на-оплату-реальный.pdf GRID ---
+   r1 0:Шефер Светлана Анатольевна, те
+--- Счет-на-оплату-реальный.pdf / Страница 2 ---
+   таблица не найдена
+--- Учёт сроков хранения.xlsm / ЛБренд Кавказский травник (ист1 ---
+   headerRow=3 columns={"number":0,"name":1,"expiry":3}
+   rows=21 skipped=[25]
+   src4 name="БИШОФИТ Mg+ гель для тела класси" code="" qty="" price="" amount=""
+   src5 name="АРОМА-КАРАНДАШ №2 ГВОЗДИКА" code="" qty="" price="" amount=""   <<< ДВОЙКА В: number
+   src6 name="АРОМА-КАРАНДАШ №3 ВЕРБЕНА" code="" qty="" price="" amount=""
+   src7 name="Бальзам SOSАКНЕ 20 мл" code="" qty="" price="" amount=""
+   src8 name="Бишофит \"МАКЛЮРА\" охлаждающий кр" code="" qty="" price="" amount=""
+   src9 name="СПРЕЙ-БАЛЬЗАМ НАЗАЛЬНЫЙ САКСКАЯ " code="" qty="" price="" amount=""
+   src10 name="Бальзам ГЕМОРТРОКС 20 мл" code="" qty="" price="" amount=""
+   src11 name="СПРЕЙ-БАЛЬЗАМ НАЗАЛЬНЫЙ ЧАЙНОЕ Д" code="" qty="" price="" amount=""
+   src12 name="Маклюра (ФОРТЕ) Гель-бальзам для" code="" qty="" price="" amount=""
+   src13 name="Маклюра (ФОРТЕ) Крем-бальзам для" code="" qty="" price="" amount=""
+   src14 name="Маклюра (ФОРТЕ) Гель-бальзам дво" code="" qty="" price="" amount=""
+   src15 name="Бальзам ЖИВОКОСТ 20 мл" code="" qty="" price="" amount=""
+   src16 name="Бальзам АНТИПРОСТУДИН 20 мл" code="" qty="" price="" amount=""
+   src17 name="Маклюра (ФОРТЕ) Крем-бальзам для" code="" qty="" price="" amount=""
+   src18 name="Бальзам ГРИБОДЕРМ 20 мл" code="" qty="" price="" amount=""
+   src19 name="АРОМА-КАРАНДАШ №1 ЭВКАЛИПТОЛ" code="" qty="" price="" amount=""
+   src20 name="Маклюра (ФОРТЕ) Крем-бальзам для" code="" qty="" price="" amount=""
+   src21 name="БИШОФИТ (хлопья) 400 гр." code="" qty="" price="" amount=""
+   src22 name="Бишофит \"САКСКАЯ ГРЯЗЬ\" разогрев" code="" qty="" price="" amount=""
+   src23 name="Бамбуковая зубная щётка (НАТУРАЛ" code="" qty="" price="" amount=""
+   src24 name="БИШОФИТ + БИОФЕН гель для тела в" code="" qty="" price="" amount=""
+--- Учёт сроков хранения.xlsm / ГРИНФИТО ООО ---
+   headerRow=3 columns={"number":0,"name":1,"expiry":3}
+   rows=6 skipped=[10]
+   src4 name="концентрат для приготовления нап" code="" qty="" price="" amount=""
+   src5 name="нативный биокомплекс \"Дигидрокве" code="" qty="" price="" amount=""   <<< ДВОЙКА В: number
+   src6 name="нативный биокомплекс \"Дигидрокве" code="" qty="" price="" amount=""
+   src7 name="нативный биокомплекс \"Дигидрокве" code="" qty="" price="" amount=""
+   src8 name="селективный биокомплекс \"DeFAT 8" code="" qty="" price="" amount=""
+   src9 name="селективный биокомплекс \"DeSugar" code="" qty="" price="" amount=""
+--- Учёт сроков хранения.xlsm / Две Линии ---
+   headerRow=3 columns={"number":0,"name":1,"expiry":3}
+   rows=32 skipped=[36]
+   src4 name="Силапант Крем для рук \"Свежесть " code="" qty="" price="" amount=""
+   src5 name="AltaiBio Крем для лица для норма" code="" qty="" price="" amount=""   <<< ДВОЙКА В: number
+   src6 name="AltaiBio Крем для век, 30 мл" code="" qty="" price="" amount=""
+   src7 name="Силапант Anti-age скраб-маска дл" code="" qty="" price="" amount=""
+   src8 name="Силапант Набор для волос \"СИЯНИЕ" code="" qty="" price="" amount=""
+   src9 name="AltaiBio Скраб для лица \"Клубник" code="" qty="" price="" amount=""
+   src10 name="AltaiBio Крем для рук увлажняющи" code="" qty="" price="" amount=""
+   src11 name="Силапант Крем для рук \"Мягкость " code="" qty="" price="" amount=""
+   src12 name="AltaiBio Premium Зубная паста му" code="" qty="" price="" amount=""
+   src13 name="AltaiBio Premium №2 Зубная паста" code="" qty="" price="" amount=""
+   src14 name="Венокрепин Фитогель для ног, 125" code="" qty="" price="" amount=""
+   src15 name="Усталый путник Бальзам для масса" code="" qty="" price="" amount=""
+   src16 name="AltaiBio Набор для рук и ног (кр" code="" qty="" price="" amount=""
+   src17 name="AltaiBio Подарочный набор \"ДЛЯ Т" code="" qty="" price="" amount=""
+   src18 name="AltaiBio Гель для умывания, 75 м" code="" qty="" price="" amount=""
+   src19 name="AltaiBio Зубная паста для укрепл" code="" qty="" price="" amount=""
+   src20 name="AltaiBio Набор для тела  (г/душа" code="" qty="" price="" amount=""
+   src21 name="Силапант Крем для лица «СуперПит" code="" qty="" price="" amount=""
+   src22 name="Силапант Крем для лица омолажива" code="" qty="" price="" amount=""
+   src23 name="AltaiBio Косметический набор для" code="" qty="" price="" amount=""
+   src24 name="AltaiBio Набор для рук и ног (кр" code="" qty="" price="" amount=""
+   src25 name="AltaiBio Бальзам-кондиционер для" code="" qty="" price="" amount=""
+   src26 name="AltaiBio Шампунь \"Хмель-Крапива\"" code="" qty="" price="" amount=""
+   src27 name="AltaiBio Зубная паста для профил" code="" qty="" price="" amount=""
+   src28 name="AltaiBio Зубная паста для укрепл" code="" qty="" price="" amount=""
+   src29 name="Зубная паста для профилактики па" code="" qty="" price="" amount=""
+   src30 name="AltaiBio Зубная паста комплексны" code="" qty="" price="" amount=""
+   src31 name="AltaiBio Зубная паста отбеливающ" code="" qty="" price="" amount=""
+   src32 name="AltaiBio Крем для рук питательны" code="" qty="" price="" amount=""
+   src33 name="Planet SPA Altai Крем для ног пр" code="" qty="" price="" amount=""
+   src34 name="Алтайская звездочка Масло космет" code="" qty="" price="" amount=""
+   src35 name="ОБЕРЕГЪ Шампунь против выпадения" code="" qty="" price="" amount=""
+--- Учёт сроков хранения.xlsm / Лотос ООО ---
+   headerRow=3 columns={"number":0,"name":1,"expiry":3}
+   rows=21 skipped=[]
+   src4 name="ЖЕНСКИЙ !НАБОР эликсиров \"От все" code="" qty="" price="" amount=""
+   src5 name="Жидкий концентрат на растительно" code="" qty="" price="" amount=""   <<< ДВОЙКА В: number
+   src6 name="Жидкий концентрат на растительно" code="" qty="" price="" amount=""
+   src7 name="Жидкий концентрат на растительно" code="" qty="" price="" amount=""
+   src8 name="Жидкий концентрат на растительно" code="" qty="" price="" amount=""
+   src9 name="Жидкий концентрат на растительно" code="" qty="" price="" amount=""
+   src10 name="Жидкий концентрат на растительно" code="" qty="" price="" amount=""
+   src11 name="иммуноадаптивный биоконцентрат А" code="" qty="" price="" amount=""
+   src12 name="иммуноадаптивный биоконцентрат Б" code="" qty="" price="" amount=""
+   src13 name="иммуноадаптивный биоконцентрат В" code="" qty="" price="" amount=""
+   src14 name="иммуноадаптивный биоконцентрат Г" code="" qty="" price="" amount=""
+   src15 name="иммуноадаптивный биоконцентрат Д" code="" qty="" price="" amount=""
+   src16 name="иммуноадаптивный биоконцентрат Ж" code="" qty="" price="" amount=""
+   src17 name="иммуноадаптивный биоконцентрат З" code="" qty="" price="" amount=""
+   src18 name="иммуноадаптивный биоконцентрат К" code="" qty="" price="" amount=""
+   src19 name="иммуноадаптивный биоконцентрат М" code="" qty="" price="" amount=""
+   src20 name="Маточное молочко лиофилизированн" code="" qty="" price="" amount=""
+   src21 name="МУЖСКОЙ !НАБОР эликсиров \"От все" code="" qty="" price="" amount=""
+   src22 name="набор эфирных масел \"Твой Алтай\"" code="" qty="" price="" amount=""
+   src23 name="Прополис-спрей классический 30мл" code="" qty="" price="" amount=""
+   src24 name="Прополис-спрей с экстрактом живи" code="" qty="" price="" amount=""
+--- Учёт сроков хранения.xlsm / Пенталис ---
+   headerRow=3 columns={"number":0,"name":1,"expiry":3}
+   rows=28 skipped=[]
+   src4 name="Спрей Розовая вода, 100 мл" code="" qty="" price="" amount=""
+   src5 name="Маска для лица, Лечебная грязь, " code="" qty="" price="" amount=""   <<< ДВОЙКА В: number
+   src6 name="Гель для умывания РОЗА + РИС, 10" code="" qty="" price="" amount=""
+   src7 name="Спрей Термальная вода, 100 мл Те" code="" qty="" price="" amount=""
+   src8 name="Шампунь Восстанавливающий, 200 м" code="" qty="" price="" amount=""
+   src9 name="Гель АЛОЭ ВЕРА" code="" qty="" price="" amount=""
+   src10 name="Кондиционер для волос Восстанавл" code="" qty="" price="" amount=""
+   src11 name="Спрей Лавандовая вода, 100 мл" code="" qty="" price="" amount=""
+   src12 name="LIP BALM МЕЛИССА ЛИМОННАЯ SOS во" code="" qty="" price="" amount=""
+   src13 name="LIP BALM АПЕЛЬСИН + КОРИЦА, 5 мл" code="" qty="" price="" amount=""
+   src14 name="Масло для роста БРОВЕЙ и РЕСНИЦ," code="" qty="" price="" amount=""
+   src15 name="Мыло оливковое ванильное дерево," code="" qty="" price="" amount=""
+   src16 name="Крем для век РОЗА+ШИПОВНИК, 30 м" code="" qty="" price="" amount=""
+   src17 name="Крем для лица дневной АРГАНА+АМА" code="" qty="" price="" amount=""
+   src18 name="Крем для лица дневной СКВАЛАН + " code="" qty="" price="" amount=""
+   src19 name="150 мл Пенка для умывания НИМ + " code="" qty="" price="" amount=""
+   src20 name="Крем для рук и ногтей МАГНОЛИЯ +" code="" qty="" price="" amount=""
+   src21 name="Крем для лица ночной АРГАНА+АМАР" code="" qty="" price="" amount=""
+   src22 name="Мицеллярная вода РОЗМАРИН + НИМ," code="" qty="" price="" amount=""
+   src23 name="Крем для рук и ногтей ПЕРЕЦ + КЕ" code="" qty="" price="" amount=""
+   src24 name="Мыло оливковое с лавром и лемонг" code="" qty="" price="" amount=""
+   src25 name="Мыло оливковое с сандалом, 100 г" code="" qty="" price="" amount=""
+   src26 name="150 мл Бальзам для стоп, Бархатн" code="" qty="" price="" amount=""
+   src27 name="Мыло оливковое с эвкалиптом и ке" code="" qty="" price="" amount=""
+   src28 name="Мыло оливковое манго маракуйя, у" code="" qty="" price="" amount=""
+   src29 name="Мыло оливковое с пачули, 100 г" code="" qty="" price="" amount=""
+   src30 name="Мыло оливковое с лавандой, 100 г" code="" qty="" price="" amount=""
+   src31 name="Бальзам для лица Розовое облако," code="" qty="" price="" amount=""
+--- Учёт сроков хранения.xlsm / Риф и Ко ---
+   headerRow=3 columns={"number":0,"name":1,"expiry":3}
+   rows=10 skipped=[14]
+   src4 name="Конфеты шоколадные \"Шоколадный з" code="" qty="" price="" amount=""
+   src5 name="Конфеты шоколадные \"Шоколадный з" code="" qty="" price="" amount=""   <<< ДВОЙКА В: number
+   src6 name="Конфеты шоколадные \"Кедровый мик" code="" qty="" price="" amount=""
+   src7 name="Конфеты шоколадные \"Кедровый мик" code="" qty="" price="" amount=""
+   src8 name="Конфеты шоколадные \"Кедровый мик" code="" qty="" price="" amount=""
+   src9 name="Конфеты шоколадные \"Кедровый мик" code="" qty="" price="" amount=""
+   src10 name="Шоколад \"Белокуриха\" 55г" code="" qty="" price="" amount=""
+   src11 name="Шоколад \"Белуха\" 55г" code="" qty="" price="" amount=""
+   src12 name="Шоколад \"Телецкое озеро\" 55г" code="" qty="" price="" amount=""
+   src13 name="Конфеты шоколадные \"Кедровое пра" code="" qty="" price="" amount=""
+--- Учёт сроков хранения.xlsm / Алфит ---
+   headerRow=3 columns={"number":0,"name":1,"expiry":3}
+   rows=28 skipped=[]
+   src4 name="Драже из трав \"Для женщин\" с яго" code="" qty="" price="" amount=""
+   src5 name="Бальзам женский (стекло)" code="" qty="" price="" amount=""   <<< ДВОЙКА В: number
+   src6 name="Бальзам мужской (стекло)" code="" qty="" price="" amount=""
+   src7 name="Драже из трав \"Для мужчин\" с кед" code="" qty="" price="" amount=""
+   src8 name="БАД Коэнзим Q10\", 60 капсул по 3" code="" qty="" price="" amount=""
+   src9 name="БАД к пище \"Vitamin D3 500 МЕ \"А" code="" qty="" price="" amount=""
+   src10 name="Целебная ЧАГА Алтая с ИСЛАНДСКИМ" code="" qty="" price="" amount=""
+   src11 name="Фитокомплекс \"РОДНИК\"" code="" qty="" price="" amount=""
+   src12 name="Концентрат на растительном сырье" code="" qty="" price="" amount=""
+   src13 name="Концентрат на растительном сырье" code="" qty="" price="" amount=""
+   src14 name="Концентрат на растительном сырье" code="" qty="" price="" amount=""
+   src15 name="Целебная чага Алтая с лимонником" code="" qty="" price="" amount=""
+   src16 name="БАД Цитрат Магния B6" code="" qty="" price="" amount=""
+   src17 name="Целебная ЧАГА Алтая с ИМБИРЕМ и " code="" qty="" price="" amount=""
+   src18 name="Фитокомплекс \"ОБЕРЕГ\"" code="" qty="" price="" amount=""
+   src19 name="Концентрат пищевой  \"Морской гид" code="" qty="" price="" amount=""
+   src20 name="Концентрат пищевой \"Коллаген гид" code="" qty="" price="" amount=""
+   src21 name="Целебная Чага Алтая с шиповником" code="" qty="" price="" amount=""
+   src22 name="Целебная чага Алтая с лопухом 40" code="" qty="" price="" amount=""
+   src23 name="Целебная чага Алтая с золотым ко" code="" qty="" price="" amount=""
+   src24 name="Травяные таблетки \"Цистаб\", 45 г" code="" qty="" price="" amount=""
+   src25 name="Травяные таблетки \"Пульмотаб\", 4" code="" qty="" price="" amount=""
+   src26 name="Набор конфет «Кедровый грильяж в" code="" qty="" price="" amount=""
+   src27 name="Сироп на растительном сырье с со" code="" qty="" price="" amount=""
+   src28 name="БАД к пище \"Хондроитин+Глюкозами" code="" qty="" price="" amount=""
+   src29 name="Травяные таблетки \"Невротаб\", 45" code="" qty="" price="" amount=""
+   src30 name="Глюнорм 120г (60 брикетов по 2 г" code="" qty="" price="" amount=""
+   src31 name="БАД \"ЦЕОЛИТсорбент\" Вулканически" code="" qty="" price="" amount=""
+--- накладная-демо.xlsx / Накладная ---
+   headerRow=6 columns={"number":0,"name":1,"code":2,"quantity":3,"unit":4,"price":5,"amount":6,"expiry":7}
+   rows=5 skipped=[]
+   src7 name="Чай зелёный «Лотос», 100 г" code="1001" qty="24" price="120" amount="2880"
+   src8 name="Конфеты шоколадные «Белокуриха»," code="1002" qty="12" price="150" amount="1800"   <<< ДВОЙКА В: number
+   src9 name="Чабрец, 50 г" code="1003" qty="10" price="50" amount="500"
+   src10 name="Мёд алтайский, 250 г" code="1004" qty="5" price="200" amount="1000"
+   src11 name="Бальзам «Кавказский травник», 10" code="1005" qty="8" price="250" amount="2000"
+
+ ✓ reports/diag-all.test.ts (1 test) 1600ms
+   ✓ все фикстуры: где живёт «2» (1)
+     ✓ разбирает каждый файл 1597ms
+
+ Test Files  16 passed (16)
+      Tests  126 passed (126)
+   Start at  21:30:11
+   Duration  2.38s (tests 58%, import 32%, transform 7%, worker 2%)
+
+    Isolate  16 workers spawned · ~330ms startup each (spawn + environment, per file)
+             at least ~425ms faster with isolate: false — reuses workers across files instead of one per file
+

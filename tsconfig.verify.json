@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "outDir": "reports/verify",
+    "rootDir": "src",
+    "paths": { "@/*": ["./src/*"] },
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": false,
+    "declaration": false,
+    "verbatimModuleSyntax": false,
+    "isolatedModules": false,
+    "types": ["node"]
+  },
+  "include": ["src/lib/dates.ts", "src/lib/xlsx.ts", "src/domain/invoice.ts"]
+}

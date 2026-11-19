@@ -1,0 +1,61 @@
+﻿node.exe : failed to load config from C:\Users\user\Desktop\Excel\vite.config.ts
+строка:2 знак:8
++ $out = & $n "node_modules\vitest\vitest.mjs" run --reporter=basic 2>& ...
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (failed to load ...\vite.config.ts:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+⎯⎯⎯⎯⎯⎯⎯ Startup Error ⎯⎯⎯⎯⎯⎯⎯⎯
+Error: Build failed with 2 errors:
+
+[31m[UNLOADABLE_DEPENDENCY] [0mCould not load node_modules/@tailwindcss/oxide-win32-x64-msvc/tailwindcss-oxide.win32-
+x64-msvc.node
+     [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tailwindcss/oxide/index.js:131:33 [38;5;246m][0m
+     [38;5;246m│[0m
+ [38;5;246m131 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m
+[38;5;249m [0m[38;5;249m [0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249ms[0m[38;5;249mt[0m[38;5;2
+49m [0m[38;5;249mb[0m[38;5;249mi[0m[38;5;249mn[0m[38;5;249md[0m[38;5;249mi[0m[38;5;249mn[0m[38;5;249mg[0
+m[38;5;249m [0m[38;5;249m=[0m[38;5;249m [0m[38;5;249mr[0m[38;5;249me[0m[38;5;249mq[0m[38;5;249mu[0m[38;5
+;249mi[0m[38;5;249mr[0m[38;5;249me[0m[38;5;249m([0m'@tailwindcss/oxide-win32-x64-msvc'[38;5;249m)[0m
+ [38;5;240m    │[0m                                 ─────────────────┬─────────────────  
+ [38;5;240m    │[0m                                                  ╰─────────────────── stream did not contain vali
+d UTF-8
+[38;5;246m─────╯[0m
+
+[plugin externalize-deps]
+Error: spawn EPERM
+    at ChildProcess.spawn (node:internal/child_process:458:11)
+    at spawn (node:child_process:813:9)
+    at Object.execFile (node:child_process:349:17)
+    at exec (node:child_process:236:25)
+    at optimizeSafeRealPathSync (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:2483:2)
+    at windowsSafeRealPathSync (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:2469:3)
+    at getRealPath (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:29619:36)
+    at tryResolveRealFileOrType (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:29613:9
+)
+    at tryCleanFsResolve (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:29362:21)
+    at tryFsResolve (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:29355:14)
+    at aggregateBindingErrorsIntoJsError (file:///C:/Users/user/Desktop/Excel/node_modules/rolldown/dist/shared/error-B
+J9uQLIS.mjs:50:18)
+    at unwrapBindingResult (file:///C:/Users/user/Desktop/Excel/node_modules/rolldown/dist/shared/error-BJ9uQLIS.mjs:20
+:128)
+    at #build (file:///C:/Users/user/Desktop/Excel/node_modules/rolldown/dist/shared/rolldown-DWd2aEL4.mjs:146:34)
+    at async bundleConfigFile (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:38097:12)
+    at async bundleAndLoadConfigFile (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:37
+993:18)
+    at async loadConfigFromFile (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:37954:4
+2)
+    at async resolveConfig (file:///C:/Users/user/Desktop/Excel/node_modules/vite/dist/node/chunks/node.js:37555:22)
+    at async resolveConfig (file:///C:/Users/user/Desktop/Excel/node_modules/vitest/dist/chunks/index.Di8au7q4.js:9300:
+25)
+    at async createVitest (file:///C:/Users/user/Desktop/Excel/node_modules/vitest/dist/chunks/cli-api.COfZo8lK.js:1393
+8:17)
+    at async prepareVitest (file:///C:/Users/user/Desktop/Excel/node_modules/vitest/dist/chunks/cli-api.COfZo8lK.js:146
+25:14) {
+  errors: [Getter/Setter]
+}
+
+
+
+

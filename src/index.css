@@ -1,0 +1,205 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ------------------------------------------------------------------
+   Строгая деловая тема: белый фон, чёткие границы, крупные элементы.
+   Цветом выделяются только статусы срока — и это ровно те цвета,
+   которыми красил условное форматирование Excel.
+------------------------------------------------------------------- */
+@theme {
+  --animate-reveal: reveal 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Segoe UI Emoji";
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* Заголовки — тем же Inter: никакой «антиквы», интерфейс рабочий. */
+  --font-serif: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Статусы срока из Excel (условное форматирование A4:I1003):
+       1) просрочено        #8B0000
+       2) истекает ≤30 дней #FF0000
+       3) истекает 31–60    #FFEB9C  */
+  --color-expired: #8b0000;
+  --color-soon: #ff0000;
+  --color-warning: #ffeb9c;
+}
+
+:root {
+  --radius: 0.5rem;
+
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #0f172a;
+  --primary-foreground: #ffffff;
+  --secondary: #eef2f7;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #475569;
+  --accent: #0f172a;
+  --accent-foreground: #ffffff;
+  --destructive: #b91c1c;
+  --destructive-foreground: #ffffff;
+  --border: #cbd5e1;
+  --input: #cbd5e1;
+  --ring: #0f172a;
+}
+
+/* «Перекидываем» токены в имена цветов Tailwind v4. */
+@theme inline {
+  /* Радиусы 4–8px: как в складских CRM и современных таблицах.
+     Крупные радиусы (16–24px) убраны — это и была «мягкость», а не углы. */
+  --radius-xs: 4px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    /* iOS: не увеличивать шрифт при повороте — на складе читают с телефона. */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "kern", "liga", "tnum";
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: none;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.011em;
+  }
+
+  /* Поля ввода на телефоне не мельче 16px, иначе iOS зумит страницу. */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+#root {
+  position: relative;
+}
+
+/* Печатные формы (аудит п.27). Контейнер живой, но на экране скрыт:
+   его наполняет printHtml() перед window.print() и очищает после. */
+.print-root {
+  display: none;
+}
+
+@media print {
+  /* При печати остаётся только форма; интерфейс и доки не мешают. */
+  body {
+    background: #fff;
+  }
+  #root,
+  .print-root {
+    display: none !important;
+  }
+  .print-root:not(:empty) {
+    display: block !important;
+  }
+
+  .print-doc {
+    color: #000;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  }
+  .print-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 4px;
+  }
+  .print-sub {
+    font-size: 12px;
+    color: #475569;
+    margin: 0 0 16px;
+  }
+  .print-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+  }
+  .print-table th,
+  .print-table td {
+    border: 1px solid #cbd5e1;
+    padding: 5px 7px;
+    text-align: left;
+    vertical-align: top;
+  }
+  .print-table th {
+    background: #f1f5f9;
+    font-weight: 600;
+  }
+  .print-total {
+    margin: 12px 0;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .print-signatures {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+  }
+  .print-signatures > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 12px;
+  }
+  .print-line {
+    width: 180px;
+    border-bottom: 1px solid #000;
+    height: 1px;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-reveal {
+    animation: none;
+  }
+}
