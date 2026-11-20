@@ -1,0 +1,5 @@
+#!/bin/sh
+# Hook: all logic lives in scripts/guard-staged.mjs (node + git).
+# Install: node scripts/install-hooks.mjs
+# ASCII-only on purpose: Windows PowerShell reads UTF-8 without BOM as ANSI.
+exec node "$(git rev-parse --show-toplevel)/scripts/guard-staged.mjs"
